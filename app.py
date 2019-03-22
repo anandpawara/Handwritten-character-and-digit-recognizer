@@ -3,6 +3,7 @@ import importlib.util
 from flask import Flask, render_template, request
 # from scipy.misc import imsave, imread, imresize
 from scipy.misc import imsave, imread, imresize
+from PIL import Image, ImageFilter
 import numpy as np
 import keras.models
 import re
@@ -18,7 +19,8 @@ model, graph = init()
 
 
 def convertImage(imgData1):
-    imgstr = re.search(b'base64,(*)', imgData1).group(1)
+    imgstr = re.search(b'base64,(.*)', imgData1).group(1)
+    print(imgstr)
     with open('output.png', 'wb') as output:
         output.write(base64.b64decode(imgstr))
 
@@ -42,7 +44,7 @@ def predict():
         out = model.predict(x)
         print(out)
         print(np.argmax(out, axis=1))
-        print("debig3")
+        print("debug3")
         response = np.array_str(np.argmax(out, axis=1))
         return response
 
