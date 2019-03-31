@@ -20,10 +20,9 @@ model, graph = init()
 
 def convertImage(imgData1):
     imgstr = re.search(b'base64,(.*)', imgData1).group(1)
-    print(imgstr)
+#     print(imgstr)
     with open('output.png', 'wb') as output:
         output.write(base64.b64decode(imgstr))
-
 
 @app.route('/')
 def index():
