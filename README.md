@@ -1,5 +1,5 @@
-# DigitRecognizer
+# Hand written digit and character recognizer
 
-Flask app to recognize hand written digit
+Interactive Flask web app to recognize hand written digit and characters
 
 Deployed on [app_link](https://glacial-temple-26332.herokuapp.com/)
