@@ -24,6 +24,7 @@ def convertImage(imgData1):
     with open('output.png', 'wb') as output:
         output.write(base64.b64decode(imgstr))
 
+
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -31,6 +32,7 @@ def index():
 
 @app.route('/predict/', methods=['GET', 'POST'])
 def predict():
+    class_mapping = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabdefghnqrt'
     imgData = request.get_data()
     convertImage(imgData)
     print("debug")
@@ -44,7 +46,11 @@ def predict():
         print(out)
         print(np.argmax(out, axis=1))
         print("debug3")
-        response = np.array_str(np.argmax(out, axis=1))
+        print(class_mapping[12])
+        print(class_mapping[np.int(np.argmax(out, axis=1))])
+        # response = np.array_str(np.argmax(out, axis=1))
+        response = class_mapping[np.int(np.argmax(out, axis=1))]
+        print(response)
         return response
 
 

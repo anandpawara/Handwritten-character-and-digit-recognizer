@@ -14,7 +14,7 @@ def init():
     # loaded_model.load_weights("model/model.h5")
     # print("Loaded Model from disk")
     # Loading custom model
-    custom_model = load_model("first_try.h5")
+    custom_model = load_model("character_recognizer.h5")
     print("Loaded custom model from disk")
 
     # compile and evaluate loaded model
